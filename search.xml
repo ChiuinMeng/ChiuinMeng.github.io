@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[hexo_test2]]></title>
+    <url>%2F2019%2F06%2F13%2Fhexo-test2%2F</url>
+    <content type="text"><![CDATA[hexo 标签 12345title: hexo_test2date: 2019-06-13 22:24:53tags: - hexo- 入门 sidebar侧边栏，打开 主题配置文件 找到sidebar字段 头像设置，打开 主题配置文件 找到Sidebar Avatar字段（侧边栏阿凡达……） 12# Sidebar Avataravatar: /images/header.jpg 这是头像的路径，只需把你的头像命名为header.jpg（随便命名）放入themes/next/source/images中，将avatar的路径名改成你的头像名就OK啦！ 把文章归入分类只需在文章的顶部标题下方添加categories字段，即可自动创建分类名并加入对应的分类中举个栗子： 12title: 分类测试文章标题categories: 分类名 把文章添加标签只需在文章的顶部标题下方添加tags字段，即可自动创建标签名并归入对应的标签中举个栗子： 12345title: 标签测试文章标题tags: - 标签1 - 标签2 ... 添加关于模块1、新建一个关于页面 1$ hexo new page about 2、你会发现你的source文件夹下有了about/index.md，打开index.md文件即可编辑关于你的信息，可以随便编辑。3、打开 主题配置文件 找到menu，将about取消注释 添加阅读全文按钮因为在你的博客主页会有多篇文章，如果你想让你的文章只显示一部分，多余的可以点击阅读全文来查看，那么你需要在你的文章中添加 1&lt;!--more--&gt; 其后面的部分就不会显示了，只能点击阅读全文才能看。 参考资料 Hexo的Next主题详细配置]]></content>
+      <tags>
+        <tag>hexo</tag>
+        <tag>入门</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[hexo_hi_test]]></title>
     <url>%2F2019%2F06%2F13%2Fhexo-hi-test%2F</url>
     <content type="text"><![CDATA[测试Leancloud官网 创建一个应用：article_reading_statistics 这怎么还出现阿拉伯文了？ 把zh_cn改成zh-CN试试。可以了。 概述了解您的资源在效果、索引涵盖范围和增强选项成功率方面的总体情况。打开报告可深入了解相关信息。 覆盖率查看 Google 能/不能将您网站中的哪些网页编入索引以及相关原因。 站点地图查看 Google 在您的网站中找到的站点地图，然后提交新的站点地图。 在 Google 搜索结果中的表现探索您的资源在 Google 搜索中的效果，包括展示次数、排名、点击率和热门查询字符串。 已成功提交站点地图Google 会定期处理该站点地图，看看是否有任何更改。日后，如果该站点地图出现任何问题，我们会通知您。]]></content>
