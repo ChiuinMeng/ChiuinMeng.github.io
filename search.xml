@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[test3]]></title>
+    <url>%2F2019%2F06%2F14%2Ftest3%2F</url>
+    <content type="text"><![CDATA[测试图片：]]></content>
+      <tags>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[hexo_test2]]></title>
     <url>%2F2019%2F06%2F13%2Fhexo-test2%2F</url>
     <content type="text"><![CDATA[hexo 标签 12345title: hexo_test2date: 2019-06-13 22:24:53tags: - hexo- 入门 sidebar侧边栏，打开 主题配置文件 找到sidebar字段 头像设置，打开 主题配置文件 找到Sidebar Avatar字段（侧边栏阿凡达……） 12# Sidebar Avataravatar: /images/header.jpg 这是头像的路径，只需把你的头像命名为header.jpg（随便命名）放入themes/next/source/images中，将avatar的路径名改成你的头像名就OK啦！ 把文章归入分类只需在文章的顶部标题下方添加categories字段，即可自动创建分类名并加入对应的分类中举个栗子： 12title: 分类测试文章标题categories: 分类名 把文章添加标签只需在文章的顶部标题下方添加tags字段，即可自动创建标签名并归入对应的标签中举个栗子： 12345title: 标签测试文章标题tags: - 标签1 - 标签2 ... 添加关于模块1、新建一个关于页面 1$ hexo new page about 2、你会发现你的source文件夹下有了about/index.md，打开index.md文件即可编辑关于你的信息，可以随便编辑。3、打开 主题配置文件 找到menu，将about取消注释 添加阅读全文按钮因为在你的博客主页会有多篇文章，如果你想让你的文章只显示一部分，多余的可以点击阅读全文来查看，那么你需要在你的文章中添加 1&lt;!--more--&gt; 其后面的部分就不会显示了，只能点击阅读全文才能看。 参考资料 Hexo的Next主题详细配置]]></content>
