@@ -1665,6 +1665,16 @@ pre .javascript .function {
 #qr p {
   text-align: center;
 }
+.post-copyright {
+  margin: 2em 0 0;
+  padding: 0.5em 1em;
+  border-left: 3px solid #ff1700;
+  background-color: #f9f9f9;
+  list-style: none;
+}
+.post-copyright i.fa {
+  font-size: 15px;
+}
 .post-widgets {
   border-top: 1px solid #eee;
   padding-top: 9px;
@@ -1854,7 +1864,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #830b6a;
+  background: #d0349d;
 }
 .feed-link,
 .chat {
@@ -2040,6 +2050,9 @@ pre .javascript .function {
 }
 .footer-inner {
   text-align: center;
+}
+#animate {
+  animation: iconAnimate 1.33s ease-in-out infinite;
 }
 .with-love {
   display: inline-block;
@@ -3069,4 +3082,11 @@ ul.breadcrumb li+li:last-child {
   .pagination {
     margin: 8px 0 0;
   }
+}
+.post {
+  margin-top: 60px;
+  margin-bottom: 60px;
+  padding: 25px;
+  -webkit-box-shadow: 0 0 5px rgba(202,203,203,0.5);
+  -moz-box-shadow: 0 0 5px rgba(202,203,204,0.5);
 }
