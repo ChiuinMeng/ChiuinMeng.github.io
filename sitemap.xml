@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://chiuinmeng.github.io/2019/06/14/test3/</loc>
+    
+    <lastmod>2019-06-14T10:04:33.034Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://chiuinmeng.github.io/2019/06/13/hexo-hi-test/</loc>
+    
+    <lastmod>2019-06-14T10:04:05.967Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://chiuinmeng.github.io/about/index.html</loc>
     
     <lastmod>2019-06-14T09:52:36.146Z</lastmod>
@@ -44,23 +58,9 @@
   </url>
   
   <url>
-    <loc>https://chiuinmeng.github.io/2019/06/14/test3/</loc>
-    
-    <lastmod>2019-06-13T20:52:07.250Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://chiuinmeng.github.io/2019/06/13/hexo-test2/</loc>
     
     <lastmod>2019-06-13T14:58:46.389Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://chiuinmeng.github.io/2019/06/13/hexo-hi-test/</loc>
-    
-    <lastmod>2019-06-13T13:20:10.648Z</lastmod>
     
   </url>
   
