@@ -1864,7 +1864,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ff3dff;
+  background: #18e873;
 }
 .feed-link,
 .chat {
@@ -3084,9 +3084,9 @@ ul.breadcrumb li+li:last-child {
   }
 }
 .post {
-  margin-top: 60px;
+  margin-top: 10px;
   margin-bottom: 60px;
-  padding: 25px;
+  padding: 10px;
   -webkit-box-shadow: 0 0 5px rgba(202,203,203,0.5);
   -moz-box-shadow: 0 0 5px rgba(202,203,204,0.5);
 }
