@@ -11,7 +11,7 @@
   <entry>
     <title><![CDATA[picture]]></title>
     <url>%2F2019%2F06%2F14%2Fpicture%2F</url>
-    <content type="text"><![CDATA[hexo 图片，插件： 写文章时图片路径： 生成文章时图片路径： 所以找不到图片啊！ 到这个仓库区， https://github.com/xcodebuild/hexo-asset-image.git 下载以后，还得改index.js。因为它的有错误！ 比如我发现这么个错误： 12// var endPos = link.lastIndexOf('.'); //获取最后一个点的位置，不就是.io吗？也说不定啊，文件名可以允许有点啊。比如saff.sfa.jpg，这里显得不严谨！所以后面切子串错了！var endPos = getPosition(link, '/', 7); 改完这个后，再在typora设置： 现在我可以在typora上可视化的插入图片进行编写md文件了。 不用写那么麻烦的官方标签了，比如： 1&#123;% asset_img 这是一个新的博客的图片.jpg 这是一个新的博客的图片的说明 %&#125; 这样的标签在typora上无法渲染，在GitHub上也无法渲染。 参考： https://blog.csdn.net/xjm850552586/article/details/84101345]]></content>
+    <content type="text"><![CDATA[hexo 图片，插件： 写文章时图片路径： 生成文章时图片路径： 所以找不到图片啊！ 到这个仓库区， https://github.com/xcodebuild/hexo-asset-image.git 下载以后，还得改index.js。因为它的有错误！ 比如我发现这么个错误： 12// var endPos = link.lastIndexOf('.'); //获取最后一个点的位置，不就是.io吗？也说不定啊，文件名可以允许有点啊。比如saff.sfa.jpg，这里显得不严谨！所以后面切子串错了！var endPos = getPosition(link, '/', 7); 改完这个后，再在typora设置： 现在我可以在typora上可视化的插入图片进行编写md文件了。 不用写那么麻烦的官方标签了，比如： 1&#123;% asset_img 这是一个新的博客的图片.jpg 这是一个新的博客的图片的说明 %&#125; 这样的标签在typora上无法渲染，在GitHub上也无法渲染。 文章基本设置： 12345678910---title: CentOS7下Tomcat启动慢的原因及解决方案date: 2017-12-02 21:01:24comments: true #是否可评论toc: true #是否显示文章目录categories: &quot;云服务器&quot; #分类tags: #标签 - centOS - tomcat--- 参考： https://blog.csdn.net/xjm850552586/article/details/84101345]]></content>
       <tags>
         <tag>hexo</tag>
       </tags>
