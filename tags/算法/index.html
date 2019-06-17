@@ -15,7 +15,7 @@
 
 
 <html class="theme-next gemini use-motion" lang="zh-CN">
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -413,6 +413,32 @@ var _hmt = _hmt || [];
 
       <h3 class="post-title">
         
+          <a class="post-title-link" href="/2019/06/16/《算法设计与分析》动态规划/" itemprop="url">
+            
+              <span itemprop="name">《算法设计与分析》动态规划</span>
+            
+          </a>
+        
+      </h3>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated" datetime="2019-06-16T07:07:00+08:00" content="2019-06-16">
+          06-16
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
+      
+        
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h3 class="post-title">
+        
           <a class="post-title-link" href="/2019/06/15/《算法设计与分析》习题/" itemprop="url">
             
               <span itemprop="name">《算法设计与分析》习题</span>
@@ -439,7 +465,7 @@ var _hmt = _hmt || [];
 
       <h3 class="post-title">
         
-          <a class="post-title-link" href="/2019/06/14/算法设计课程复习/" itemprop="url">
+          <a class="post-title-link" href="/2019/06/14/《算法设计与分析》分治法/" itemprop="url">
             
               <span itemprop="name">算法设计课程复习</span>
             
@@ -508,7 +534,7 @@ var _hmt = _hmt || [];
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">10</span>
+                    <span class="site-state-item-count">6</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -527,9 +553,7 @@ var _hmt = _hmt || [];
                     
                       
                     
-                      
-                    
-                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-count">1</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -552,13 +576,7 @@ var _hmt = _hmt || [];
                     
                       
                     
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-count">3</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -673,7 +691,7 @@ var _hmt = _hmt || [];
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">总字数: 13k字</span>
+    <span title="站点总字数">总字数: 18k字</span>
   
 
   
@@ -682,7 +700,7 @@ var _hmt = _hmt || [];
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">阅读时长: 12 分钟</span>
+    <span title="站点阅读时长">阅读时长: 17 分钟</span>
   
 </div>
 
@@ -1236,6 +1254,32 @@ setInterval("createtime()",250);
 
 
   
+<script>
+if ($('body').find('div.pdf').length) {
+  $.ajax({
+    type: 'GET',
+    url: '//cdn.jsdelivr.net/npm/pdfobject@2/pdfobject.min.js',
+    dataType: 'script',
+    cache: true,
+    success: function() {
+      $('body').find('div.pdf').each(function(i, o) {
+        PDFObject.embed($(o).attr('target'), $(o), {
+          pdfOpenParams: {
+            navpanes: 0,
+            toolbar: 0,
+            statusbar: 0,
+            pagemode: 'thumbs',
+            view: 'FitH'
+          },
+          PDFJS_URL: '/lib/pdf/web/viewer.html',
+          height: $(o).attr('height') || '500px'
+        });
+      });
+    },
+  });
+}
+</script>
+
 
   
 
