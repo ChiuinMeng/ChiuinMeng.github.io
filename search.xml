@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[hexo pdf]]></title>
+    <title><![CDATA[《算法设计与分析》贪心法]]></title>
     <url>%2F2019%2F06%2F17%2F%E3%80%8A%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90%E3%80%8B%E8%B4%AA%E5%BF%83%E6%B3%95%2F</url>
-    <content type="text"><![CDATA[pdf文件 1234567&#123;% pdf /贪心法.pdf %&#125;&#123;% pdf ./贪心法.pdf %&#125;&#123;% pdf /《算法设计与分析》贪心法/贪心法.pdf %&#125;&#123;% pdf ./《算法设计与分析》贪心法/贪心法.pdf %&#125; 能正常显示吗？]]></content>
+    <content type="text"><![CDATA[pdf文件如下，谷歌浏览器能正常查看：]]></content>
       <tags>
         <tag>hexo</tag>
       </tags>
