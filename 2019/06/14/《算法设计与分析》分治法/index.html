@@ -106,30 +106,30 @@
 
 
 
-  <meta name="description" content="分治法设计递归函数，计算n!的值，其中n&amp;gt;0。 1234int factorial(int n)&amp;#123;    if(n==1) return 1;    else return factorial(n-1)*n;&amp;#125; 算法总体思想 将求解的较大规模的问题分割成k个更小规模的子问题。对这k个子问题分别求解。  比如上面的factorial函数，将n规模的任务缩小为n-1规模的任务">
+  <meta name="description" content="分治法Hanoi塔问题假定n-1个盘子的转移算法已确定，对n个圆盘的问题：    第1步：把A上面的n-1个圆盘经C转移到B上    第2步：把A最下面的一个圆盘移到C上    第3步：把B上的n-1圆盘经A转移到C上转移完毕。算法分析：令h(n)表示n个圆盘所需要的转移盘次，则算法复杂度为？$h(n) = 2h(n-1) + 1, h(1)=1$$h(n) = 2^n -1$ Fibonacci">
 <meta name="keywords" content="算法">
 <meta property="og:type" content="article">
 <meta property="og:title" content="算法设计课程复习">
 <meta property="og:url" content="https://chiuinmeng.github.io/2019/06/14/《算法设计与分析》分治法/index.html">
 <meta property="og:site_name" content="梦秋音">
-<meta property="og:description" content="分治法设计递归函数，计算n!的值，其中n&amp;gt;0。 1234int factorial(int n)&amp;#123;    if(n==1) return 1;    else return factorial(n-1)*n;&amp;#125; 算法总体思想 将求解的较大规模的问题分割成k个更小规模的子问题。对这k个子问题分别求解。  比如上面的factorial函数，将n规模的任务缩小为n-1规模的任务">
+<meta property="og:description" content="分治法Hanoi塔问题假定n-1个盘子的转移算法已确定，对n个圆盘的问题：    第1步：把A上面的n-1个圆盘经C转移到B上    第2步：把A最下面的一个圆盘移到C上    第3步：把B上的n-1圆盘经A转移到C上转移完毕。算法分析：令h(n)表示n个圆盘所需要的转移盘次，则算法复杂度为？$h(n) = 2h(n-1) + 1, h(1)=1$$h(n) = 2^n -1$ Fibonacci">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://chiuinmeng.github.io/2019/06/14/《算法设计与分析》分治法/《算法设计与分析》分治法/1560520502208.png">
-<meta property="og:image" content="https://chiuinmeng.github.io/2019/06/14/《算法设计与分析》分治法/《算法设计与分析》分治法/1560522068765.png">
-<meta property="og:image" content="https://chiuinmeng.github.io/2019/06/14/《算法设计与分析》分治法/《算法设计与分析》分治法/1560522084067.png">
-<meta property="og:image" content="https://chiuinmeng.github.io/2019/06/14/《算法设计与分析》分治法/《算法设计与分析》分治法/1560522769359.png">
-<meta property="og:image" content="https://chiuinmeng.github.io/2019/06/14/《算法设计与分析》分治法/《算法设计与分析》分治法/1560522599310.png">
-<meta property="og:image" content="https://chiuinmeng.github.io/2019/06/14/《算法设计与分析》分治法/《算法设计与分析》分治法/1560522622652.png">
-<meta property="og:image" content="https://chiuinmeng.github.io/2019/06/14/《算法设计与分析》分治法/《算法设计与分析》分治法/1560523861412.png">
-<meta property="og:image" content="https://chiuinmeng.github.io/2019/06/14/《算法设计与分析》分治法/《算法设计与分析》分治法/1560523920165.png">
-<meta property="og:image" content="https://chiuinmeng.github.io/2019/06/14/《算法设计与分析》分治法/《算法设计与分析》分治法/1560523934323.png">
-<meta property="og:image" content="https://chiuinmeng.github.io/2019/06/14/《算法设计与分析》分治法/《算法设计与分析》分治法/1560525220722.png">
-<meta property="og:image" content="https://chiuinmeng.github.io/2019/06/14/《算法设计与分析》分治法/《算法设计与分析》分治法/1560526093343.png">
-<meta property="og:updated_time" content="2019-06-17T14:42:43.790Z">
+<meta property="og:image" content="https://chiuinmeng.github.io/2019/06/14/《算法设计与分析》分治法/1560520502208.png">
+<meta property="og:image" content="https://chiuinmeng.github.io/2019/06/14/《算法设计与分析》分治法/1560522068765.png">
+<meta property="og:image" content="https://chiuinmeng.github.io/2019/06/14/《算法设计与分析》分治法/1560522084067.png">
+<meta property="og:image" content="https://chiuinmeng.github.io/2019/06/14/《算法设计与分析》分治法/1560522769359.png">
+<meta property="og:image" content="https://chiuinmeng.github.io/2019/06/14/《算法设计与分析》分治法/1560522599310.png">
+<meta property="og:image" content="https://chiuinmeng.github.io/2019/06/14/《算法设计与分析》分治法/1560522622652.png">
+<meta property="og:image" content="https://chiuinmeng.github.io/2019/06/14/《算法设计与分析》分治法/1560523861412.png">
+<meta property="og:image" content="https://chiuinmeng.github.io/2019/06/14/《算法设计与分析》分治法/1560523920165.png">
+<meta property="og:image" content="https://chiuinmeng.github.io/2019/06/14/《算法设计与分析》分治法/1560523934323.png">
+<meta property="og:image" content="https://chiuinmeng.github.io/2019/06/14/《算法设计与分析》分治法/1560525220722.png">
+<meta property="og:image" content="https://chiuinmeng.github.io/2019/06/14/《算法设计与分析》分治法/1560526093343.png">
+<meta property="og:updated_time" content="2019-06-18T03:00:58.183Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="算法设计课程复习">
-<meta name="twitter:description" content="分治法设计递归函数，计算n!的值，其中n&amp;gt;0。 1234int factorial(int n)&amp;#123;    if(n==1) return 1;    else return factorial(n-1)*n;&amp;#125; 算法总体思想 将求解的较大规模的问题分割成k个更小规模的子问题。对这k个子问题分别求解。  比如上面的factorial函数，将n规模的任务缩小为n-1规模的任务">
-<meta name="twitter:image" content="https://chiuinmeng.github.io/2019/06/14/《算法设计与分析》分治法/《算法设计与分析》分治法/1560520502208.png">
+<meta name="twitter:description" content="分治法Hanoi塔问题假定n-1个盘子的转移算法已确定，对n个圆盘的问题：    第1步：把A上面的n-1个圆盘经C转移到B上    第2步：把A最下面的一个圆盘移到C上    第3步：把B上的n-1圆盘经A转移到C上转移完毕。算法分析：令h(n)表示n个圆盘所需要的转移盘次，则算法复杂度为？$h(n) = 2h(n-1) + 1, h(1)=1$$h(n) = 2^n -1$ Fibonacci">
+<meta name="twitter:image" content="https://chiuinmeng.github.io/2019/06/14/《算法设计与分析》分治法/1560520502208.png">
 
 
 
@@ -463,7 +463,7 @@ var _hmt = _hmt || [];
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-06-17 22:42:43" itemprop="dateModified" datetime="2019-06-17T22:42:43+08:00">2019-06-17</time>
+                <time title="修改时间：2019-06-18 11:00:58" itemprop="dateModified" datetime="2019-06-18T11:00:58+08:00">2019-06-18</time>
               
             
           </span>
@@ -529,7 +529,7 @@ var _hmt = _hmt || [];
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">4.8k字</span>
+                <span title="本文字数">6.7k字</span>
               
 
               
@@ -543,7 +543,7 @@ var _hmt = _hmt || [];
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">4 分钟</span>
+                <span title="阅读时长">6 分钟</span>
               
             </div>
           
@@ -563,7 +563,16 @@ var _hmt = _hmt || [];
       
 
       
-        <h3 id="分治法"><a href="#分治法" class="headerlink" title="分治法"></a>分治法</h3><p>设计递归函数，计算n!的值，其中n&gt;0。</p>
+        <h3 id="分治法"><a href="#分治法" class="headerlink" title="分治法"></a>分治法</h3><h3 id="Hanoi塔问题"><a href="#Hanoi塔问题" class="headerlink" title="Hanoi塔问题"></a>Hanoi塔问题</h3><p>假定n-1个盘子的转移算法已确定，对n个圆盘的问题：<br>    第1步：把A上面的n-1个圆盘经C转移到B上<br>    第2步：把A最下面的一个圆盘移到C上<br>    第3步：把B上的n-1圆盘经A转移到C上<br>转移完毕。<br><strong>算法分析</strong>：令h(n)表示n个圆盘所需要的转移盘次，则算法复杂度为？<br>$h(n) = 2h(n-1) + 1, h(1)=1$<br>$h(n) = 2^n -1$</p>
+<h3 id="Fibonacci数列"><a href="#Fibonacci数列" class="headerlink" title="Fibonacci数列"></a>Fibonacci数列</h3><h3 id="二分查找"><a href="#二分查找" class="headerlink" title="二分查找"></a>二分查找</h3><p>int BinarySearch (int x, int a[], int low, int high ){<br>   //递归实现二分查找算法，找不到返回-1<br>   if ( low &gt; high) return -1;<br>   mid = (low+high)/2;    </p>
+<p>   if(x==a[mid]) return mid;<br>   if (x&gt;a[mid]) return BinarySearch(x, a, mid+1, high);<br>   else          return BinarySearch(x, a, low, mid-1);<br>}</p>
+<p>int Search_Bin ( SSTable ST, KeyType kval ) {<br>   low = 1;  high = ST.length;     // 置区间初值<br>   while (<span style="color:red">low &lt;= high</span>) {<br>      <strong>mid</strong> = (low + high) / 2;<br>      if   ( kval == ST.elem[mid].key  )<br>          return  <strong>mid</strong>;       // 找到待查元素<br>      else  if ( kval &lt; ST.elem[mid].key) )<br>          high = <strong>mid - 1</strong>;   // 继续在前半区间进行查找<br>      else  low  = <strong>mid + 1</strong>;  // 继续在后半区间进行查找<br>   }<br>   return 0;<br>}</p>
+<h3 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h3><p><span style="color:pink"><strong>基本思想</strong></span>是任取待排序对象序列中的某个对象 (例如取第一个对象) 作为基准, 按照该对象的排序码大小,将整个对象序列划分为左右两个子序列：<span style="color:blue">左序列</span> ≤ <span style="color:red">基准对象</span> ≤ <span style="color:blue">右序列</span></p>
+<p><span style="color:green">QuickSort</span> ( List ) {<br>     if ( List的长度大于1) {<br>     将List <span style="color:red">划分</span>为LeftList 和 RightList;<br>         <span style="color:green">QuickSort</span> ( LeftList );<br>         <span style="color:green">QuickSort</span> ( RightList );<br>         <span style="color:blue">合并</span>LeftList 和 RightList 为 List;<br>    }<br>}</p>
+<p>void <strong>QuickSort</strong> ( SqList &amp;L, int low, int high ){<br>//在序列low~high 中递归地进行快速排序<br>    if ( low &lt; high) {<br>       int <span style="color:red">pivotloc</span>= Partition (L, low, high);   //划分<br><br><br>       <strong>QuickSort</strong> ( L, low, <span style="color:red">pivotloc-1</span>); //对左序列递归处理<br>       <strong>QuickSort</strong> ( L, <span style="color:red">pivotloc+1</span>, high); //对右序列递归处理<br>    }<br>}</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Partition</span> <span class="params">( SqList &amp;L, <span class="keyword">int</span> low, <span class="keyword">int</span> high )</span> </span>&#123;</span><br><span class="line">   pivotkey = L.r[low].key; <span class="comment">//基准对象关键字</span></span><br><span class="line">   <span class="keyword">while</span>(low&lt;high)&#123;</span><br><span class="line">       <span class="keyword">while</span>(low&lt;high &amp;&amp; L.r[high].key &gt;= pivotkey) --high;</span><br><span class="line">        L.r[low] &lt;-&gt; L.r[high]; <span class="comment">//小于基准对象的移到区间的左侧</span></span><br><span class="line">        <span class="keyword">while</span>(low&lt;high&amp;&amp; L.r[low].key &lt;= pivotkey) ++low;</span><br><span class="line">         L.r[high] &lt;-&gt; L.r[low] ; <span class="comment">//大于基准对象的移到区间的右侧</span></span><br><span class="line">   &#125;    </span><br><span class="line">   <span class="keyword">return</span> low;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>1，查找数组a[n]中的最大元素，至少需要多少次比较?<br>2，查找数组a[n]中的最大和最小元素，用最少的元素比较次数。<br>3，查找数组a[n]中的第k小的元素（k相对于n比较小)；<br>4，查找数组a[n]中的中位数（序号为n/2)；</p>
+<p>设计递归函数，计算n!的值，其中n&gt;0。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">factorial</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(n==<span class="number">1</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> factorial(n-<span class="number">1</span>)*n;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h4 id="算法总体思想"><a href="#算法总体思想" class="headerlink" title="算法总体思想"></a>算法总体思想</h4><ol>
 <li><p>将求解的较<u>大规模</u>的问题分割成k个更<u>小规模</u>的子问题。对这k个子问题分别求解。</p>
@@ -572,7 +581,7 @@ var _hmt = _hmt || [];
 <li><p>如果子问题的规模仍然不够小，则再划分为k个子问题，如此递归的进行下去，<strong>直到问题规模足够小，很容易求出其解为止</strong>。</p>
 </li>
 <li><p>将求出的小规模的问题的解<strong>合并</strong>为一个更大规模的问题的解，<strong>自底向上</strong>逐步求出原来问题的解。</p>
-<p> <img src="《算法设计与分析》分治法/1560520502208.png" alt="1560520502208"></p>
+<p> <img src="/2019/06/14/《算法设计与分析》分治法/1560520502208.png" alt="1560520502208"></p>
 </li>
 </ol>
 <a id="more"></a>
@@ -587,29 +596,29 @@ var _hmt = _hmt || [];
 <p>这条特征涉及到分治法的效率，<u>如果各子问题是不独立的</u>，则分治法要做许多不必要的工作，重复地解公共的子问题，此时虽然也可用分治法，但一般用<u>动态规划</u>较好。</p>
 <h4 id="分治法的基本步骤-重要"><a href="#分治法的基本步骤-重要" class="headerlink" title="分治法的基本步骤(重要)"></a>分治法的基本步骤(重要)</h4><p>divide-and-<strong>conquer</strong>(P)<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;if ( | P | &lt;= n0) <strong>adhoc</strong>(P);   //解决小规模的问题<br>&nbsp;&nbsp;&nbsp;&nbsp;<strong>divide</strong> P into smaller subinstances P1,P2,…,Pk；//分解问题<br>&nbsp;&nbsp;&nbsp;&nbsp;for (i=1,i&lt;=k,i++)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;yi=<strong>divide-and-conquer</strong>(Pi);  //递归的解各子问题<br>&nbsp;&nbsp;&nbsp;&nbsp;return <strong>merge</strong>(y1,…,yk); //将各子问题的解合并为原问题的解<br>}  </p>
 <h4 id="分治法的复杂性分析-重要"><a href="#分治法的复杂性分析-重要" class="headerlink" title="分治法的复杂性分析(重要)"></a>分治法的复杂性分析(重要)</h4><p>一个分治法将规模为n的问题分成<strong>k个规模</strong>为<strong>n/m的子问题</strong>去解。设分解阀值n0=1，且adhoc解规模为1的问题耗费1个单位时间。再设将原问题分解为k个子问题以及用merge将k个子问题的解合并为原问题的解需用f(n)个单位时间。用T(n)表示该分治法解规模为|P|=n的问题所需的计算时间，则有：</p>
-<p><img src="《算法设计与分析》分治法/1560522068765.png" alt="1560522068765"></p>
+<p><img src="/2019/06/14/《算法设计与分析》分治法/1560522068765.png" alt="1560522068765"></p>
 <p>通过迭代法求得方程的解（记住<script type="math/tex">n^{\log_{m}k}</script>，以后分析算法复杂度的时候会用到）：</p>
-<p><img src="《算法设计与分析》分治法/1560522084067.png" alt="1560522084067"></p>
+<p><img src="/2019/06/14/《算法设计与分析》分治法/1560522084067.png" alt="1560522084067"></p>
 <h4 id="二分搜索技术"><a href="#二分搜索技术" class="headerlink" title="二分搜索技术"></a>二分搜索技术</h4><p>给定<u>已按升序排好</u>序的n个元素a[0:n-1]，现要在这n个元素中找出一特定元素x。</p>
 <blockquote>
 <p>public static int <strong>binarySearch</strong>(int [] a, int x, int n)<br>{<br>    // 在 a[0] &lt;= a[1] &lt;= … &lt;= a[n-1] 中搜索 x<br>    // 找到x时返回其在数组中的位置，否则返回-1<br>    int left = 0; int right = n - 1;<br>    <strong>while</strong> (left &lt;= right) {<br>        int middle = (left + right)/2;<br>        <strong>if</strong> (x == a[middle]) <strong>return</strong> middle;<br>        <strong>if</strong> (x &gt; a[middle]) left = middle + 1;<br>        <strong>else</strong> right = middle - 1;<br>    }<br>    <strong>return</strong> -1; // 未找到x<br>}</p>
 </blockquote>
 <h4 id="大整数的乘法"><a href="#大整数的乘法" class="headerlink" title="大整数的乘法"></a>大整数的乘法</h4><p> 请设计一个有效的算法，可以进行两个n位大整数的乘法运算。</p>
 <p>tip：算法分析，更多追求的是算法设计思想，别太深究代码中的错误。你如果硬要深究，我就说这是伪代码，哼(￢︿̫̿￢☆)</p>
-<p><img src="《算法设计与分析》分治法/1560522769359.png" alt="1560522769359"></p>
-<script type="math/tex; mode=display">X = a 2^{n/2}+b</script><script type="math/tex; mode=display">Y = c 2^{n/2}+d</script><script type="math/tex; mode=display">XY = ac 2^n + (ad+bc) 2^{n/2} + bd</script><p><img src="《算法设计与分析》分治法/1560522599310.png" alt="1560522599310"></p>
+<p><img src="/2019/06/14/《算法设计与分析》分治法/1560522769359.png" alt="1560522769359"></p>
+<script type="math/tex; mode=display">X = a 2^{n/2}+b</script><script type="math/tex; mode=display">Y = c 2^{n/2}+d</script><script type="math/tex; mode=display">XY = ac 2^n + (ad+bc) 2^{n/2} + bd</script><p><img src="/2019/06/14/《算法设计与分析》分治法/1560522599310.png" alt="1560522599310"></p>
 <script type="math/tex; mode=display">XY = ac2^n + ((a-b)(d-c)+ac+bd)2^{n/2}+bd</script><p>或</p>
-<script type="math/tex; mode=display">XY = ac 2^n + ((a+c)(b+d)-ac-bd) 2^{n/2} + bd</script><p><img src="《算法设计与分析》分治法/1560522622652.png" alt="1560522622652"></p>
+<script type="math/tex; mode=display">XY = ac 2^n + ((a+c)(b+d)-ac-bd) 2^{n/2} + bd</script><p><img src="/2019/06/14/《算法设计与分析》分治法/1560522622652.png" alt="1560522622652"></p>
 <p><strong>细节问题</strong>：两个XY的复杂度都是O(nlog3)，但考虑到a+c,b+d可能得到m+1位的结果，使问题的规模变大，故不选择第2种方案。</p>
 <h5 id="更快的方法"><a href="#更快的方法" class="headerlink" title="更快的方法??"></a>更快的方法??</h5><p>如果将大整数分成更多段，用更复杂的方式把它们组合起来，将有可能得到更优的算法。</p>
 <p>最终的，这个思想导致了<strong>快速傅利叶变换(</strong>Fast Fourier Transform)的产生。该方法也可以看作是一个复杂的分治算法，对于大整数乘法，它能在<strong>O(nlogn)</strong>时间内解决。</p>
 <h5 id="是否能找到线性时间的算法？"><a href="#是否能找到线性时间的算法？" class="headerlink" title="是否能找到线性时间的算法？"></a>是否能找到线性时间的算法？</h5><p>目前为止还没有结果。</p>
 <h4 id="Strassen矩阵乘法"><a href="#Strassen矩阵乘法" class="headerlink" title="Strassen矩阵乘法"></a>Strassen矩阵乘法</h4><p>传统方法：<script type="math/tex">O(n^3)</script><br>分治法: 使用与上例类似的技术，将矩阵A，B和C中每一矩阵都分块成4个大小相等的子矩阵。由此可将方程C=AB重写为：</p>
 <script type="math/tex; mode=display">\begin{bmatrix}C_{11} &C_{12} \\\\ C_{21} & C_{22} \end{bmatrix} = \begin{bmatrix}A_{11} &A_{12} \\\\ A_{21} & A_{22} \end{bmatrix}\begin{bmatrix}B_{11} &B_{12} \\\\ B_{21} & B_{22} \end{bmatrix}</script><p>由此可得：</p>
-<script type="math/tex; mode=display">C_{11}= A_{11}B_{11}+A_{12}B_{21}\\\\C_{12}=A_{11}B_{12}+A_{12}B_{22}\\\\C_{21}=A_{21}B_{11}+A_{22}B_{21}\\\\C_{22}=A_{21}B_{12}+A_{22}B_{22}</script><p><img src="《算法设计与分析》分治法/1560523861412.png" alt="1560523861412"></p>
+<script type="math/tex; mode=display">C_{11}= A_{11}B_{11}+A_{12}B_{21}\\\\C_{12}=A_{11}B_{12}+A_{12}B_{22}\\\\C_{21}=A_{21}B_{11}+A_{22}B_{21}\\\\C_{22}=A_{21}B_{12}+A_{22}B_{22}</script><p><img src="/2019/06/14/《算法设计与分析》分治法/1560523861412.png" alt="1560523861412"></p>
 <p>为了降低时间复杂度，必须减少乘法的次数。</p>
-<p><img src="《算法设计与分析》分治法/1560523920165.png" alt="1560523920165"></p>
-<p><img src="《算法设计与分析》分治法/1560523934323.png" alt="1560523934323"></p>
+<p><img src="/2019/06/14/《算法设计与分析》分治法/1560523920165.png" alt="1560523920165"></p>
+<p><img src="/2019/06/14/《算法设计与分析》分治法/1560523934323.png" alt="1560523934323"></p>
 <h5 id="更快的方法-1"><a href="#更快的方法-1" class="headerlink" title="更快的方法??"></a>更快的方法??</h5><p>Hopcroft和Kerr已经证明(1971)，计算2个２×２矩阵的乘积，<u>7次乘法是必要的</u>。因此，要想进一步改进矩阵乘法的时间复杂性，就不能再基于计算2×2矩阵的7次乘法的方法了。</p>
 <p>或许应当研究３×３或５×５矩阵的更好算法。<br>在Strassen之后又有许多算法改进了矩阵乘法的计算时间复杂性。目前最好的计算时间上界是 <script type="math/tex">O(n^{2.376})</script></p>
 <h5 id="是否能找到-O-n-2-的算法？"><a href="#是否能找到-O-n-2-的算法？" class="headerlink" title="是否能找到$O(n^2)$的算法？"></a>是否能找到$O(n^2)$的算法？</h5><p>目前为止还没有结果。</p>
@@ -626,7 +635,7 @@ var _hmt = _hmt || [];
 <h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p>汕头大学算法分析设计课程PPT__老师（CHYD）</p>
 <h4 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h4><p>人们从大量实践中发现，在用分治法设计算法时，最好使子问题的规模大致相同。即将一个问题分成大小相等的k个子问题的处理方法是行之有效的。这种使子问题规模大致相等的做法是出自一种<strong>平衡(balancing)子问题</strong>的思想，它几乎总是比子问题规模不等的做法要好。</p>
 <h4 id="合并排序"><a href="#合并排序" class="headerlink" title="合并排序"></a>合并排序</h4><p>算法mergeSort的过程。</p>
-<p><img src="《算法设计与分析》分治法/1560525220722.png" alt="1560525220722"></p>
+<p><img src="/2019/06/14/《算法设计与分析》分治法/1560525220722.png" alt="1560525220722"></p>
 <p>基本思想：将待排序元素<u>分成</u>大小大致相同的<u>2个</u>子<u>集合</u>，<u>分别</u>对2个子集合进行<u>排序</u>，最终将排好序的子集合<u>合并</u>成为所要求的排好序的集合。 </p>
 <blockquote>
 <p>public static void <strong>mergeSort</strong>(Comparable a[], int left, int right)<br>{<br>    if (left&lt;right) {//至少有2个元素<br>        int i=(left+right)/2;  //取中点<br>        <strong>mergeSort</strong>(a, left, i);<br>        <strong>mergeSort</strong>(a, i+1, right);<br>        <strong>merge</strong>(a, b, left, i, right);  //合并到数组b<br>        <strong>copy</strong>(a, b, left, right);    //复制回数组a<br>    }<br>}</p>
@@ -634,13 +643,13 @@ var _hmt = _hmt || [];
 <p>复杂度分析：</p>
 <script type="math/tex; mode=display">T(n) = \left \{ \begin{matrix} O(1) & n<=1\\ 2T(n/2)+O(n) & n>1\end{matrix} \right.</script><p>T(n)=O(logn)渐进意义下的最优算法。</p>
 <p>最坏时间复杂度：O(nlogn)<br>平均时间复杂度：O(nlogn)<br>辅助空间：<strong>O(n)</strong><br>稳定性：稳定</p>
-<h4 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h4><p>快速排序是对气泡排序的一种改进方法。它是由C.A.R. Hoare于1962年提出的。</p>
+<h4 id="快速排序-1"><a href="#快速排序-1" class="headerlink" title="快速排序"></a>快速排序</h4><p>快速排序是对气泡排序的一种改进方法。它是由C.A.R. Hoare于1962年提出的。</p>
 <p>在快速排序中，记录的比较和交换是从<strong>两端向中间</strong>进行的，关键字较大的记录一次就能交换到后面单元，关键字较小的记录一次就能交换到前面单元，记录每次移动的距离较大，因而总的比较和移动次数较少。</p>
 <blockquote>
 <p>private static void <strong>qSort</strong>(int p, int r)<br>{<br>    if (p&lt;r) {<br>        int q=<strong>partition</strong>(p,r); //划分<br>        <strong>qSort</strong> (p,q-1); //对左半段排序<br>        <strong>qSort</strong> (q+1,r); //对右半段排序<br>    }<br>}</p>
 <p>private static int <strong>partition</strong> (int p, int r)<br>{<br>    int i = p,<br>        j = r + 1;<br>    Comparable x = a[p];<br>    // 将&gt;= x的元素交换到左边区域<br>    // 将&lt;= x的元素交换到右边区域<br>    <strong>while</strong> (<strong>true</strong>) {<br>        <strong>while</strong> (a[++i].compareTo(x) &lt; 0);<br>        <strong>while</strong> (a[—j].compareTo(x) &gt; 0);<br>        <strong>if</strong> (i &gt;= j) <strong>break</strong>;<br>        MyMath.<strong>swap</strong>(a, i, j);<br>    }<br>    a[p] = a[j];<br>    a[j] = x;<br>    <strong>return</strong> j;<br>}</p>
 </blockquote>
-<p><img src="《算法设计与分析》分治法/1560526093343.png" alt="1560526093343"></p>
+<p><img src="/2019/06/14/《算法设计与分析》分治法/1560526093343.png" alt="1560526093343"></p>
 <p>​    快速排序算法的性能取决于<u>划分的对称性</u>。通过修改算法<strong>partition</strong>，可以设计出采用随机选择策略的快速排序算法。在快速排序算法的每一步中，当数组还没有被划分时，可以在a[p:r]中随机选出一个元素作为划分基准，这样可以使划分基准的选择是随机的，从而可以期望划分是较对称的。</p>
 <blockquote>
 <p>private static int <strong>randomizedPartition</strong> (int p, int r)<br>{<br>    int i = <strong>random</strong>(p,r);<br>    MyMath.<strong>swap</strong>(a, i, p);<br>    <strong>return</strong> <strong>partition</strong> (p, r);<br>}</p>
@@ -861,7 +870,7 @@ var _hmt = _hmt || [];
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-count">7</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -999,7 +1008,7 @@ var _hmt = _hmt || [];
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#分治法"><span class="nav-number">1.</span> <span class="nav-text">分治法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#算法总体思想"><span class="nav-number">1.1.</span> <span class="nav-text">算法总体思想</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分治法的设计思想"><span class="nav-number">1.2.</span> <span class="nav-text">分治法的设计思想</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分治法的适用条件"><span class="nav-number">1.3.</span> <span class="nav-text">分治法的适用条件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分治法的基本步骤-重要"><span class="nav-number">1.4.</span> <span class="nav-text">分治法的基本步骤(重要)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分治法的复杂性分析-重要"><span class="nav-number">1.5.</span> <span class="nav-text">分治法的复杂性分析(重要)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二分搜索技术"><span class="nav-number">1.6.</span> <span class="nav-text">二分搜索技术</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#大整数的乘法"><span class="nav-number">1.7.</span> <span class="nav-text">大整数的乘法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#更快的方法"><span class="nav-number">1.7.1.</span> <span class="nav-text">更快的方法??</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#是否能找到线性时间的算法？"><span class="nav-number">1.7.2.</span> <span class="nav-text">是否能找到线性时间的算法？</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Strassen矩阵乘法"><span class="nav-number">1.8.</span> <span class="nav-text">Strassen矩阵乘法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#更快的方法-1"><span class="nav-number">1.8.1.</span> <span class="nav-text">更快的方法??</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#是否能找到-O-n-2-的算法？"><span class="nav-number">1.8.2.</span> <span class="nav-text">是否能找到$O(n^2)$的算法？</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#思考题"><span class="nav-number">1.9.</span> <span class="nav-text">思考题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#参考"><span class="nav-number">1.10.</span> <span class="nav-text">参考</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#补充"><span class="nav-number">1.11.</span> <span class="nav-text">补充</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#合并排序"><span class="nav-number">1.12.</span> <span class="nav-text">合并排序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#快速排序"><span class="nav-number">1.13.</span> <span class="nav-text">快速排序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#思考题-1"><span class="nav-number">1.14.</span> <span class="nav-text">思考题</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#分治法"><span class="nav-number">1.</span> <span class="nav-text">分治法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hanoi塔问题"><span class="nav-number">2.</span> <span class="nav-text">Hanoi塔问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Fibonacci数列"><span class="nav-number">3.</span> <span class="nav-text">Fibonacci数列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二分查找"><span class="nav-number">4.</span> <span class="nav-text">二分查找</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#快速排序"><span class="nav-number">5.</span> <span class="nav-text">快速排序</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#算法总体思想"><span class="nav-number">5.1.</span> <span class="nav-text">算法总体思想</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分治法的设计思想"><span class="nav-number">5.2.</span> <span class="nav-text">分治法的设计思想</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分治法的适用条件"><span class="nav-number">5.3.</span> <span class="nav-text">分治法的适用条件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分治法的基本步骤-重要"><span class="nav-number">5.4.</span> <span class="nav-text">分治法的基本步骤(重要)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分治法的复杂性分析-重要"><span class="nav-number">5.5.</span> <span class="nav-text">分治法的复杂性分析(重要)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二分搜索技术"><span class="nav-number">5.6.</span> <span class="nav-text">二分搜索技术</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#大整数的乘法"><span class="nav-number">5.7.</span> <span class="nav-text">大整数的乘法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#更快的方法"><span class="nav-number">5.7.1.</span> <span class="nav-text">更快的方法??</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#是否能找到线性时间的算法？"><span class="nav-number">5.7.2.</span> <span class="nav-text">是否能找到线性时间的算法？</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Strassen矩阵乘法"><span class="nav-number">5.8.</span> <span class="nav-text">Strassen矩阵乘法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#更快的方法-1"><span class="nav-number">5.8.1.</span> <span class="nav-text">更快的方法??</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#是否能找到-O-n-2-的算法？"><span class="nav-number">5.8.2.</span> <span class="nav-text">是否能找到$O(n^2)$的算法？</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#思考题"><span class="nav-number">5.9.</span> <span class="nav-text">思考题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#参考"><span class="nav-number">5.10.</span> <span class="nav-text">参考</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#补充"><span class="nav-number">5.11.</span> <span class="nav-text">补充</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#合并排序"><span class="nav-number">5.12.</span> <span class="nav-text">合并排序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#快速排序-1"><span class="nav-number">5.13.</span> <span class="nav-text">快速排序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#思考题-1"><span class="nav-number">5.14.</span> <span class="nav-text">思考题</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -1035,7 +1044,7 @@ var _hmt = _hmt || [];
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">总字数: 18k字</span>
+    <span title="站点总字数">总字数: 22k字</span>
   
 
   
@@ -1044,7 +1053,7 @@ var _hmt = _hmt || [];
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">阅读时长: 16 分钟</span>
+    <span title="站点阅读时长">阅读时长: 20 分钟</span>
   
 </div>
 
