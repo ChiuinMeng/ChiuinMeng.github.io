@@ -1,0 +1,1757 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+  <!--  <script src="https://unpkg.com/pdfjs-dist@2.0.943/build/pdf.js"></script>  --> 
+  <script type="text/javascript" src="/js/pdf.js"></script> 
+  <script type="text/javascript" src="/js/pdf.worker.js"></script> 
+  
+  
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+
+
+
+
+
+
+
+
+  <meta name="google-site-verification" content="y1LzyPT3i85rDClV6298C_-G_BZDWHimnNAtlBI4cqU">
+
+
+
+
+
+
+
+  <meta name="baidu-site-verification" content="qmUjmRcUg8">
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.2">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.2">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.2" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="动态规划算法总体思想？如果能够保存已解决的子问题的答案，而在需要时再找出已求得的答案，就可以避免大量重复计算，从而提高计算效率。  基本步骤（重要） 找出最优解的性质，并刻划其结构特征。 递归地定义最优值。 以自底向上的方式计算出最优值。 根据计算最优值时得到的信息，构造最优解。  矩阵连乘问题有四个矩阵A，B，C，D，为了计算乘积ABCD，共有多少种不同的乘法顺序？ 若阶数分别为：A: 50*1">
+<meta name="keywords" content="算法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《算法设计与分析》动态规划">
+<meta property="og:url" content="https://chiuinmeng.github.io/2019/06/16/《算法设计与分析》3. 动态规划/index.html">
+<meta property="og:site_name" content="梦秋音">
+<meta property="og:description" content="动态规划算法总体思想？如果能够保存已解决的子问题的答案，而在需要时再找出已求得的答案，就可以避免大量重复计算，从而提高计算效率。  基本步骤（重要） 找出最优解的性质，并刻划其结构特征。 递归地定义最优值。 以自底向上的方式计算出最优值。 根据计算最优值时得到的信息，构造最优解。  矩阵连乘问题有四个矩阵A，B，C，D，为了计算乘积ABCD，共有多少种不同的乘法顺序？ 若阶数分别为：A: 50*1">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://chiuinmeng.github.io/2019/06/16/《算法设计与分析》3.%20动态规划/1560640223959.png">
+<meta property="og:image" content="https://chiuinmeng.github.io/2019/06/16/《算法设计与分析》3.%20动态规划/1560642284300.png">
+<meta property="og:image" content="https://chiuinmeng.github.io/2019/06/16/《算法设计与分析》3.%20动态规划/1560642776468.png">
+<meta property="og:image" content="https://chiuinmeng.github.io/2019/06/16/《算法设计与分析》3.%20动态规划/1560643003673.png">
+<meta property="og:image" content="https://chiuinmeng.github.io/2019/06/16/《算法设计与分析》3.%20动态规划/1560643530464.png">
+<meta property="og:image" content="https://chiuinmeng.github.io/2019/06/16/《算法设计与分析》3.%20动态规划/1560644456440.png">
+<meta property="og:image" content="https://chiuinmeng.github.io/2019/06/16/《算法设计与分析》3.%20动态规划/1560644525758.png">
+<meta property="og:image" content="https://chiuinmeng.github.io/2019/06/16/《算法设计与分析》3.%20动态规划/1560644471185.png">
+<meta property="og:image" content="https://chiuinmeng.github.io/2019/06/16/《算法设计与分析》3.%20动态规划/1560645732752.png">
+<meta property="og:image" content="https://chiuinmeng.github.io/2019/06/16/《算法设计与分析》3.%20动态规划/1560645762252.png">
+<meta property="og:image" content="https://chiuinmeng.github.io/2019/06/16/《算法设计与分析》3.%20动态规划/1560645775860.png">
+<meta property="og:image" content="https://chiuinmeng.github.io/2019/06/16/《算法设计与分析》3.%20动态规划/1560645858051.png">
+<meta property="og:image" content="https://chiuinmeng.github.io/2019/06/16/《算法设计与分析》3.%20动态规划/1560645994913.png">
+<meta property="og:image" content="https://chiuinmeng.github.io/2019/06/16/《算法设计与分析》3.%20动态规划/1560646077487.png">
+<meta property="og:image" content="https://chiuinmeng.github.io/2019/06/16/《算法设计与分析》3.%20动态规划/1560647037626.png">
+<meta property="og:image" content="https://chiuinmeng.github.io/2019/06/16/《算法设计与分析》3.%20动态规划/1560647143255.png">
+<meta property="og:image" content="https://chiuinmeng.github.io/2019/06/16/《算法设计与分析》3.%20动态规划/1560647361233.png">
+<meta property="og:image" content="https://chiuinmeng.github.io/2019/06/16/《算法设计与分析》3.%20动态规划/1560647378493.png">
+<meta property="og:image" content="https://chiuinmeng.github.io/2019/06/16/《算法设计与分析》3.%20动态规划/1560647402856.png">
+<meta property="og:updated_time" content="2019-06-16T01:14:13.396Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="《算法设计与分析》动态规划">
+<meta name="twitter:description" content="动态规划算法总体思想？如果能够保存已解决的子问题的答案，而在需要时再找出已求得的答案，就可以避免大量重复计算，从而提高计算效率。  基本步骤（重要） 找出最优解的性质，并刻划其结构特征。 递归地定义最优值。 以自底向上的方式计算出最优值。 根据计算最优值时得到的信息，构造最优解。  矩阵连乘问题有四个矩阵A，B，C，D，为了计算乘积ABCD，共有多少种不同的乘法顺序？ 若阶数分别为：A: 50*1">
+<meta name="twitter:image" content="https://chiuinmeng.github.io/2019/06/16/《算法设计与分析》3.%20动态规划/1560640223959.png">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="https://chiuinmeng.github.io/2019/06/16/《算法设计与分析》3. 动态规划/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>《算法设计与分析》动态规划 | 梦秋音</title>
+  
+
+
+
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?dd8a5e86410c4bc9360eff550bc31742";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">梦秋音</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://chiuinmeng.github.io/2019/06/16/《算法设计与分析》3. 动态规划/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="梦秋音">
+      <meta itemprop="description" content="梦秋音的博客，学习记录，心得分享">
+      <meta itemprop="image" content="/images/head.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="梦秋音">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">《算法设计与分析》动态规划
+
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-06-16 07:07:00 / 修改时间：09:14:13" itemprop="dateCreated datePublished" datetime="2019-06-16T07:07:00+08:00">2019-06-16</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/课程/" itemprop="url" rel="index"><span itemprop="name">课程</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/06/16/《算法设计与分析》3. 动态规划/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/06/16/《算法设计与分析》3. 动态规划/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">7k字</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">6 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h1><h2 id="算法总体思想？"><a href="#算法总体思想？" class="headerlink" title="算法总体思想？"></a>算法总体思想？</h2><p>如果能够<strong>保存</strong>已解决的<u>子问题的答案</u>，而在需要时再找出已求得的答案，就可以避免大量重复计算，从而提高计算效率。</p>
+<p><img src="/2019/06/16/《算法设计与分析》3. 动态规划/1560640223959.png" alt="1560640223959"></p>
+<h2 id="基本步骤（重要）"><a href="#基本步骤（重要）" class="headerlink" title="基本步骤（重要）"></a>基本步骤（重要）</h2><ol>
+<li>找出<strong>最优解</strong>的性质，并刻划其结构特征。</li>
+<li><u>递归</u>地定义<strong><em>最优值</em></strong>。</li>
+<li>以<u>自底向上</u>的方式计算出<strong><em>最优值</em></strong>。</li>
+<li>根据计算最优值时得到的信息，构造<strong>最优解</strong>。</li>
+</ol>
+<h2 id="矩阵连乘问题"><a href="#矩阵连乘问题" class="headerlink" title="矩阵连乘问题"></a>矩阵连乘问题</h2><p>有四个矩阵A，B，C，D，为了计算乘积ABCD，共有多少种不同的乘法顺序？</p>
+<p>若阶数分别为：A: 50*10，B: 10*40，C: 40*30，D: 30*5。哪种乘法顺序效率最高？</p>
+<p>答：5种。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>乘法顺序</th>
+<th>乘法次数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>(((AB)C)D)</td>
+<td>87500</td>
+</tr>
+<tr>
+<td>2</td>
+<td>((AB)(CD))</td>
+<td>36000</td>
+</tr>
+<tr>
+<td>3</td>
+<td>((A(BC))D)</td>
+<td>34500</td>
+</tr>
+<tr>
+<td>4</td>
+<td>(A((BC)D))</td>
+<td>16000</td>
+</tr>
+<tr>
+<td>5</td>
+<td>(A(B(CD)))</td>
+<td>10500</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="矩阵连乘问题定义："><a href="#矩阵连乘问题定义：" class="headerlink" title="矩阵连乘问题定义："></a>矩阵连乘问题定义：</h3><p>给定n个矩阵｛A1,A2,…,An｝，其中Ai与Ai+1是可乘的，i=1,2 ,…,n-1。如何确定计算矩阵连乘积的计算次序，使得依此次序计算矩阵连乘积需要的数乘次数最少。</p>
+<p>一、找出<strong>最优解</strong>的性质，并刻划其结构特征。</p>
+<p><strong>特征：计算A[i:j]的最优次序所包含的计算矩阵子链 A[i:k]和A[k+1:j]的次序也是最优的。</strong></p>
+<p>若<u>先不想动态规划</u>，使用前面前面的分治法，可得递归定义式：</p>
+<p><img src="/2019/06/16/《算法设计与分析》3. 动态规划/1560642284300.png" alt="1560642284300"></p>
+<p>利用该递归定义式可以直接写出递归函数来计算m[i:j]</p>
+<p>static int <strong>recuMatrixChain</strong> (int i, int j)<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;if (i == j) return 0;<br>&nbsp;&nbsp;&nbsp;&nbsp;int u = <strong>recuMatrixChain</strong> (i+1,j) + p[i-1]<em>p[i]</em>p[j];<br>&nbsp;&nbsp;&nbsp;&nbsp;<strong>for</strong> (int k = i+1; k &lt; j; k++) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int t = <strong>recuMatrixChain</strong> (<em>i,k</em>) + <strong>recuMatrixChain</strong> (<em>k+1,j</em>) + <u>p[i-1]<em>p[k]</em>p[j]</u>;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (t &lt; u) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;u = t;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;return <strong>u</strong>;<br>}</p>
+<p>但是该算法的复杂度如何呢？</p>
+<p><img src="/2019/06/16/《算法设计与分析》3. 动态规划/1560642776468.png" alt="1560642776468"></p>
+<p>递归算法求解问题时，每次产生的子问题并不总是新问题，有些子问题被反复计算多次（子问题的重叠性质）。</p>
+<p><img src="/2019/06/16/《算法设计与分析》3. 动态规划/1560643003673.png" alt="1560643003673"></p>
+<p>二、<u>递归</u>地定义<strong><em>最优值</em></strong>。</p>
+<p>设计算A[i:j]，1≤i≤j≤n，所需要的最少数乘次数m[i,j]，则原问题的最优值为m[1,n]         </p>
+<p>当i=j时，A[i:j]=Ai，因此，m[i,i]=0，i=1,2,…,n</p>
+<p>当i&lt;j时，有<script type="math/tex">m[i,j]=m[i,k]+m[k+1,j]+p_{i-1}p_{k}p_{j}</script></p>
+<p>可以递归定义m[i,j]：</p>
+<p><img src="/2019/06/16/《算法设计与分析》3. 动态规划/1560643530464.png" alt="1560643530464"></p>
+<p><strong>和上面是一样的</strong>。</p>
+<p>三、以<u>自底向上</u>的方式计算出<strong><em>最优值</em></strong>。</p>
+<p><img src="/2019/06/16/《算法设计与分析》3. 动态规划/1560644456440.png" alt="1560644456440"></p>
+<p><img src="/2019/06/16/《算法设计与分析》3. 动态规划/1560644525758.png" alt="1560644525758"></p>
+<p>public static void matrixChain(int [] p, int [][] m  )<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;int n=p.length-1;<br>&nbsp;&nbsp;&nbsp;&nbsp;for (int i = 1; i &lt;= n; i++) m[i][i] = 0;<br>&nbsp;&nbsp;&nbsp;&nbsp;for (int r = 2; r &lt;= n; r++){<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (int i = 1; <strong>i &lt;= n - r+1</strong>; i++) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int <strong>j=i+r-1</strong>;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;m[i][j] = m[i+1][j]+ p[i-1]*p[i]*p[j];<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (int k = i+1; k &lt; j; k++) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int t = <strong>m[i][k] + m[k+1][j] + p[i-1]*p[k]*p[j]</strong>;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (t &lt; m[i][j]) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;m[i][j] = t;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>}</p>
+<p>四、根据计算最优值时得到的信息，构造<strong>最优解</strong>。</p>
+<p><img src="/2019/06/16/《算法设计与分析》3. 动态规划/1560644471185.png" alt="1560644471185"></p>
+<p>public static void matrixChain(int [] p, int [][] m  )<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;int n=p.length-1;<br>&nbsp;&nbsp;&nbsp;&nbsp;for (int i = 1; i &lt;= n; i++) m[i][i] = 0;<br>&nbsp;&nbsp;&nbsp;&nbsp;for (int r = 2; r &lt;= n; r++){<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (int i = 1; i &lt;= n - r+1; i++) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int j=i+r-1;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;m[i][j] = m[i+1][j]+ p[i-1]*p[i]*p[j];<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>s[i][j] = i;</strong><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (int k = i+1; k &lt; j; k++) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int t = m[i][k] + m[k+1][j] + p[i-1]*p[k]*p[j];<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (t &lt; m[i][j]) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;m[i][j] = t;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>s[i][j] = k;</strong><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>}</p>
+<h2 id="动态规划算法的基本要素"><a href="#动态规划算法的基本要素" class="headerlink" title="动态规划算法的基本要素"></a>动态规划算法的基本要素</h2><h3 id="一、最优子结构"><a href="#一、最优子结构" class="headerlink" title="一、最优子结构"></a>一、最优子结构</h3><p>矩阵连乘计算次序问题的最优解包含着其子问题的最优解。这种性质称为<strong>最优子结构性质</strong>。</p>
+<p>在分析问题的最优子结构性质时，所用的方法具有普遍性：首先假设由问题的最优解导出的子问题的解不是最优的，然后再设法说明在这个假设下可构造出比原问题最优解更好的解，从而导致矛盾。 </p>
+<p>利用问题的最优子结构性质，以自底向上的方式递归地从子问题的最优解逐步构造出整个问题的最优解。最优子结构是问题能用动态规划算法求解的前提。</p>
+<p>注意：同一个问题可以有多种方式刻划它的最优子结构，有些表示方法的求解速度更快（空间占用小，问题的维度低）</p>
+<h3 id="二、重叠子问题"><a href="#二、重叠子问题" class="headerlink" title="二、重叠子问题"></a>二、重叠子问题</h3><p>递归算法求解问题时，每次产生的子问题并不总是新问题，有些子问题被反复计算多次。这种性质称为<strong>子问题的重叠性质</strong>。</p>
+<p>动态规划算法，对每一个子问题只解一次，而后将其解保存在一个表格中，当再次需要解此子问题时，只是简单地用常数时间查看一下结果。 </p>
+<p>通常不同的子问题个数随问题的大小呈多项式增长。因此用动态规划算法只需要多项式时间，从而获得较高的解题效率。 </p>
+<h3 id="三、备忘录方法"><a href="#三、备忘录方法" class="headerlink" title="三、备忘录方法"></a>三、备忘录方法</h3><p>备忘录方法的控制结构与直接递归方法的控制结构相同，区别在于备忘录方法为每个解过的子问题建立了备忘录以备需要时查看，避免了相同子问题的重复求解。</p>
+<p>m&lt;-0<br>private static int <u>lookupChain</u>(int i, int j)<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;<strong>if (m[i][j] &gt; 0) return m[i][j];</strong><br>&nbsp;&nbsp;&nbsp;&nbsp;if (i == j) return 0;<br>&nbsp;&nbsp;&nbsp;&nbsp;else{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int u = <u>lookupChain</u>(i+1,j) + p[i-1]*p[i]*p[j];<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>s[i][j] = i;</strong><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (int k = i+1; k &lt; j; k++) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int t = <u>lookupChain</u>(i,k) + <u>lookupChain</u>(k+1,j) + p[i-1]*p[k]*p[j];<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (t &lt; u) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;u = t;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>s[i][j] = k;</strong><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>m[i][j] = u;</strong><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return <strong>u</strong>;<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>}</p>
+<h2 id="最长单调递增子序列"><a href="#最长单调递增子序列" class="headerlink" title="最长单调递增子序列"></a>最长单调递增子序列</h2><p>设计一个O(n^2)时间的算法，找出由n个数组成的序列的最长<strong>单调</strong>递增子序列。</p>
+<p>设序列为a[0:n-1]，记<strong>b[i]</strong>：以<strong>a[i]</strong>为<strong>结尾元素</strong>的最长递增子序列的长度。</p>
+<p>则序列a的最长递增子序列长度为</p>
+<p><img src="/2019/06/16/《算法设计与分析》3. 动态规划/1560645732752.png" alt="1560645732752"></p>
+<p>如何求b[i]？</p>
+<p><img src="/2019/06/16/《算法设计与分析》3. 动态规划/1560645762252.png" alt="1560645762252"></p>
+<p><img src="/2019/06/16/《算法设计与分析》3. 动态规划/1560645775860.png" alt="1560645775860"></p>
+<h2 id="最长公共子序列"><a href="#最长公共子序列" class="headerlink" title="最长公共子序列"></a>最长公共子序列</h2><p><img src="/2019/06/16/《算法设计与分析》3. 动态规划/1560645858051.png" alt="1560645858051"></p>
+<p>给定2个序列X={x1,x2,…,xm}和Y={y1,y2,…,yn}，找出X和Y的最长公共子序列。 </p>
+<p>设序列X={x1,x2,…,xm}和Y={y1,y2,…,yn}的最长公共子序列为Z={z1,z2,…,zk} ，则</p>
+<p>1)若xm=yn，<br>   则zk=xm=yn，且Zk-1是Xm-1和Yn-1的最长公共子序列。</p>
+<p>2)若xm≠yn，<br>   则Z是<br>     Xm-1和Y的最长公共子序列，X和Yn-1的最长公共子序列，<br>   中较长的序列。</p>
+<h3 id="子问题的递归结构"><a href="#子问题的递归结构" class="headerlink" title="子问题的递归结构"></a>子问题的递归结构</h3><p>由最长公共子序列问题的最优子结构性质建立子问题最优值的递归关系。用c[i][j]记录序列的最长公共子序列的长度。其中， Xi={x1,x2,…,xi}；Yj={y1,y2,…,yj}。当i=0或j=0时，空序列是Xi和Yj的最长公共子序列。故此时c[i][j]=0。其他情况下，由最优子结构性质可建立递归关系如下：</p>
+<p><img src="/2019/06/16/《算法设计与分析》3. 动态规划/1560645994913.png" alt="1560645994913"></p>
+<h3 id="计算最优值、最优解"><a href="#计算最优值、最优解" class="headerlink" title="计算最优值、最优解"></a>计算最优值、最优解</h3><p><img src="/2019/06/16/《算法设计与分析》3. 动态规划/1560646077487.png" alt="1560646077487"></p>
+<h2 id="凸多边形最优三角剖分"><a href="#凸多边形最优三角剖分" class="headerlink" title="凸多边形最优三角剖分"></a>凸多边形最优三角剖分</h2><p>表示具有n条边的凸多边形:用多边形顶点的逆时针序列表示凸多边形，即P={v0,v1,…,vn-1}。</p>
+<p>若vi与vj是多边形上不相邻的2个顶点，则线段vivj称为多边形的一条弦。弦将多边形分割成2个多边形{vi,vi+1,…,vj}和{vj,vj+1,…vi}。</p>
+<p>多边形的三角剖分是将多边形分割成互不相交的三角形的弦的集合T。</p>
+<p>给定凸多边形P，以及定义在由多边形的边和弦组成的三角形上的权函数w。要求确定该凸多边形的三角剖分，使得即该三角剖分中<strong>诸三角形上权之和</strong>为最小。 </p>
+<h3 id="最优子结构性质"><a href="#最优子结构性质" class="headerlink" title="最优子结构性质"></a>最优子结构性质</h3><p>事实上，若凸(n+1)边形<script type="math/tex">P=\{v_{0},v_{1},…,v_{n-1},v_{n}\}</script>的最优三角剖分T包含三角形<script type="math/tex">v_{0}v_{k}v_{n}</script>，1≤k≤n-1，则T的权为<strong>3个部分权的和</strong>：三角形<script type="math/tex">v_{0}v_{k}v_{n}</script>的权，子多边形<script type="math/tex">\{v_{0},v_{1},…,v_{k}\}</script>和<script type="math/tex">\{v_{k},v_{k+1},…,v_{n}\}</script>的权之和。<u>可以断言</u>，由T所确定的这2个子多边形的三角剖分也是最优的。</p>
+<p>因为若有<script type="math/tex">\{v_{0},v_{1},…,v_{k}\}</script>或<script type="math/tex">\{v_{k},v_{k+1},…,v_{n}\}</script>的更小权的三角剖分将导致T不是最优三角剖分的矛盾。 </p>
+<h2 id="多边形游戏问题"><a href="#多边形游戏问题" class="headerlink" title="多边形游戏问题"></a>多边形游戏问题</h2><p>多边形游戏是一个单人玩的游戏，开始时有一个由n个顶点构成的多边形。每个顶点被赋予一个整数值，每条边被赋予一个运算符“+”或“*”。所有边依次用整数从1到n编号。</p>
+<p><img src="/2019/06/16/《算法设计与分析》3. 动态规划/1560647037626.png" alt="1560647037626"></p>
+<p>游戏第1步，将一条边删除。</p>
+<p>随后n-1步按以下方式操作：</p>
+<p>(1)选择一条边E以及由E连接着的2个顶点V1和V2；</p>
+<p>(2)用一个新的顶点取代边E以及由E连接着的2个顶点V1和V2。将由顶点V1和V2的整数值通过边E上的运算得到的结果赋予新顶点。</p>
+<p>最后，所有边都被删除，游戏结束。游戏的得分就是所剩顶点上的整数值。</p>
+<p><img src="/2019/06/16/《算法设计与分析》3. 动态规划/1560647143255.png" alt="1560647143255"></p>
+<p><strong>问题</strong>：对于给定的多边形，计算最高得分。</p>
+<p><img src="/2019/06/16/《算法设计与分析》3. 动态规划/1560647361233.png" alt="1560647361233"></p>
+<p><img src="/2019/06/16/《算法设计与分析》3. 动态规划/1560647378493.png" alt="1560647378493"></p>
+<p><img src="/2019/06/16/《算法设计与分析》3. 动态规划/1560647402856.png" alt="1560647402856"></p>
+<h2 id="图像压缩"><a href="#图像压缩" class="headerlink" title="图像压缩"></a>图像压缩</h2><h2 id="电路布线"><a href="#电路布线" class="headerlink" title="电路布线"></a>电路布线</h2><h2 id="流水作业调度"><a href="#流水作业调度" class="headerlink" title="流水作业调度"></a>流水作业调度</h2><h2 id="0-1背包问题"><a href="#0-1背包问题" class="headerlink" title="0-1背包问题"></a>0-1背包问题</h2><h2 id="最优二叉搜索树"><a href="#最优二叉搜索树" class="headerlink" title="最优二叉搜索树"></a>最优二叉搜索树</h2>
+      
+    </div>
+
+    
+
+    
+    
+    
+	
+	<div>
+	  
+		<div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+	  
+	</div>
+
+    
+
+    
+      
+    
+    
+      <div>
+        <div id="reward-container">
+  <div></div>
+  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/wechatpay.png" alt="梦秋音 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/alipay.png" alt="梦秋音 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        
+
+
+
+
+  
+
+
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>梦秋音</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    
+    <a href="https://chiuinmeng.github.io/2019/06/16/《算法设计与分析》3. 动态规划/" title="《算法设计与分析》动态规划">https://chiuinmeng.github.io/2019/06/16/《算法设计与分析》3. 动态规划/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/算法/" rel="tag"><i class="fa fa-tag"></i> 算法</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div class="social_share">
+            
+            
+              <div id="needsharebutton-postbottom">
+                <span class="btn">
+                  <i class="fa fa-share-alt" aria-hidden="true"></i>
+                </span>
+              </div>
+            
+            
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/06/15/软件测试/" rel="next" title>
+                <i class="fa fa-chevron-left"></i> 
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/06/17/《算法设计与分析》4. 贪心法/" rel="prev" title="《算法设计与分析》贪心法">
+                《算法设计与分析》贪心法 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/head.jpg" alt="梦秋音">
+            
+              <p class="site-author-name" itemprop="name">梦秋音</p>
+              <div class="site-description motion-element" itemprop="description">梦秋音的博客，学习记录，心得分享</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                    <span class="site-state-item-count">1</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/ChiuinMeng" title="GitHub &rarr; https://github.com/ChiuinMeng" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:1759614893@qq.com" title="E-Mail &rarr; mailto:1759614893@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://blog.csdn.net/qq_35598978" title="CSDN &rarr; https://blog.csdn.net/qq_35598978" rel="noopener" target="_blank"><i class="fa fa-fw fa-copyright"></i>CSDN</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="http://wpa.qq.com/msgrd?v=3&uin=1759614893&site=qq&menu=yes" title="QQ &rarr; http://wpa.qq.com/msgrd?v=3&uin=1759614893&site=qq&menu=yes" rel="noopener" target="_blank"><i class="fa fa-fw fa-qq"></i>QQ</a>
+                </span>
+              
+            </div>
+          
+
+          
+             <div class="cc-license motion-element" itemprop="license">
+              
+              
+                
+              
+              
+              
+              <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+             </div>
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#动态规划"><span class="nav-number">1.</span> <span class="nav-text">动态规划</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#算法总体思想？"><span class="nav-number">1.1.</span> <span class="nav-text">算法总体思想？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基本步骤（重要）"><span class="nav-number">1.2.</span> <span class="nav-text">基本步骤（重要）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#矩阵连乘问题"><span class="nav-number">1.3.</span> <span class="nav-text">矩阵连乘问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#矩阵连乘问题定义："><span class="nav-number">1.3.1.</span> <span class="nav-text">矩阵连乘问题定义：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#动态规划算法的基本要素"><span class="nav-number">1.4.</span> <span class="nav-text">动态规划算法的基本要素</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、最优子结构"><span class="nav-number">1.4.1.</span> <span class="nav-text">一、最优子结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、重叠子问题"><span class="nav-number">1.4.2.</span> <span class="nav-text">二、重叠子问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、备忘录方法"><span class="nav-number">1.4.3.</span> <span class="nav-text">三、备忘录方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最长单调递增子序列"><span class="nav-number">1.5.</span> <span class="nav-text">最长单调递增子序列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最长公共子序列"><span class="nav-number">1.6.</span> <span class="nav-text">最长公共子序列</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#子问题的递归结构"><span class="nav-number">1.6.1.</span> <span class="nav-text">子问题的递归结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#计算最优值、最优解"><span class="nav-number">1.6.2.</span> <span class="nav-text">计算最优值、最优解</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#凸多边形最优三角剖分"><span class="nav-number">1.7.</span> <span class="nav-text">凸多边形最优三角剖分</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#最优子结构性质"><span class="nav-number">1.7.1.</span> <span class="nav-text">最优子结构性质</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多边形游戏问题"><span class="nav-number">1.8.</span> <span class="nav-text">多边形游戏问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#图像压缩"><span class="nav-number">1.9.</span> <span class="nav-text">图像压缩</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#电路布线"><span class="nav-number">1.10.</span> <span class="nav-text">电路布线</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#流水作业调度"><span class="nav-number">1.11.</span> <span class="nav-text">流水作业调度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0-1背包问题"><span class="nav-number">1.12.</span> <span class="nav-text">0-1背包问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最优二叉搜索树"><span class="nav-number">1.13.</span> <span class="nav-text">最优二叉搜索树</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 
+  <span itemprop="copyrightYear">2019</span>
+  
+  <span class="with-love" id="animate">
+    <i class="fa fa-heartbeat"></i>
+  </span>
+  
+  <span class="author" itemprop="copyrightHolder">梦秋音</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="站点总字数">总字数: 22k字</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+    <span title="站点阅读时长">阅读时长: 20 分钟</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 在网页底部添加网站运行时间 -->
+<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("06/13/2019 12:00:00");//此处修改你的建站时间或者网站上线时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+        document.getElementById("timeDate").innerHTML = "Run for "+dnum+" Days ";
+        document.getElementById("times").innerHTML = hnum + " Hours " + mnum + " m " + snum + " s";
+    }
+setInterval("createtime()",250);
+</script>
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="总访客量">
+	  <span>总访客量</span>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+  
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
+	  <span>总访问量</span>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    
+
+    
+
+    
+  </div>
+
+  
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+    
+  
+  <script color="0,0,255" opacity="0.5" zindex="-1" count="99" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.2"></script>
+
+  <script src="/js/motion.js?v=7.1.2"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.2"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.2"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.2"></script>
+<script src="/js/post-details.js?v=7.1.2"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.2"></script>
+
+
+  
+
+  
+
+  
+
+  
+  
+
+<script src="//cdn1.lncld.net/static/js/3.11.1/av-min.js"></script>
+
+
+
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+<script>
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: false,
+    notify: false,
+    appId: 'YrkRN8RkBSVu1d0ziCwoNqNu-gzGzoHsz',
+    appKey: '8Gro6aFLOdflor40nV9UAFL9',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: false,
+    lang: '' || 'zh-cn'
+  });
+</script>
+
+
+
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+  
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') { next = next.nextSibling }
+        if (next && next.nodeName.toLowerCase() === 'br') { next.parentNode.removeChild(next) }
+      }
+    });
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      document.getElementById(all[i].inputID + '-Frame').parentNode.className += ' has-jax';
+    }
+  });
+</script>
+<script src="//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+  
+
+  
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+  
+
+  
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+  <script>
+    
+      pbOptions = {};
+      
+        pbOptions.iconStyle = "box";
+      
+        pbOptions.boxForm = "horizontal";
+      
+        pbOptions.position = "bottomCenter";
+      
+        pbOptions.networks = "Weibo,Wechat,QQZone,Twitter,Evernote";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+      flOptions = {};
+      
+        flOptions.iconStyle = "box";
+      
+        flOptions.boxForm = "horizontal";
+      
+        flOptions.position = "middleRight";
+      
+        flOptions.networks = "Weibo,Wechat,QQZone,Twitter,Evernote";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <script src="/live2d-widget/live2d.min.js"></script>
+  <script src="/live2d-widget/waifu-tips.js"></script>
+  <script src="/live2d-widget/autoload.js"></script>
+  
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/clicklove.js"></script> 
+  
+  <!-- 
+  
+   --> 
+
+	<script type="text/javascript" src="/js/test_my_js.js"></script>
+	
+</body>
+</html>

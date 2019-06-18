@@ -17,7 +17,11 @@
 <html class="theme-next gemini use-motion" lang="zh-CN">
 <head><meta name="generator" content="Hexo 3.9.0">
   <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://unpkg.com/pdfjs-dist@2.0.943/build/pdf.js"></script>
+  <!--  <script src="https://unpkg.com/pdfjs-dist@2.0.943/build/pdf.js"></script>  --> 
+  <script type="text/javascript" src="/js/pdf.js"></script> 
+  <script type="text/javascript" src="/js/pdf.worker.js"></script> 
+  
+  
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -1226,32 +1230,6 @@ setInterval("createtime()",250);
 
 
   
-<script>
-if ($('body').find('div.pdf').length) {
-  $.ajax({
-    type: 'GET',
-    url: '//cdn.jsdelivr.net/npm/pdfobject@2/pdfobject.min.js',
-    dataType: 'script',
-    cache: true,
-    success: function() {
-      $('body').find('div.pdf').each(function(i, o) {
-        PDFObject.embed($(o).attr('target'), $(o), {
-          pdfOpenParams: {
-            navpanes: 0,
-            toolbar: 0,
-            statusbar: 0,
-            pagemode: 'thumbs',
-            view: 'FitH'
-          },
-          PDFJS_URL: '/lib/pdf/web/viewer.html',
-          height: $(o).attr('height') || '500px'
-        });
-      });
-    },
-  });
-}
-</script>
-
 
   
 
@@ -1327,5 +1305,7 @@ if ($('body').find('div.pdf').length) {
   
    --> 
 
+	<script type="text/javascript" src="/js/test_my_js.js"></script>
+	
 </body>
 </html>
