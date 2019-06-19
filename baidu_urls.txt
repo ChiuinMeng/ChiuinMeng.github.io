@@ -1,5 +1,5 @@
-https://chiuinmeng.github.io/2019/06/18/《算法设计与分析》1. 引论/
 https://chiuinmeng.github.io/2019/06/17/《算法设计与分析》4. 贪心法/
 https://chiuinmeng.github.io/2019/06/16/《算法设计与分析》3. 动态规划/
 https://chiuinmeng.github.io/2019/06/15/软件测试/
 https://chiuinmeng.github.io/2019/06/15/《算法设计与分析》习题/
+https://chiuinmeng.github.io/2019/06/14/《算法设计与分析》2. 分治法/
